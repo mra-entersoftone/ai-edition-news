@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EBS AI Edition · Coming soon!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Commissioner:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --blue:#0A4CE0; --blue-ink:#062C8F; --blue-soft:#5C8DFF;
+  --lime:#B4F03C; --white:#FFFFFF; --mist:rgba(255,255,255,.74);
+  --display:"Commissioner","Segoe UI","Helvetica Neue",Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+html,body{height:100%}
+body{margin:0;background:var(--blue-ink);color:var(--white);font-family:var(--display);overflow:hidden;-webkit-font-smoothing:antialiased}
+#viewport{position:fixed;inset:0;overflow:hidden}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center;transform:translate(-50%,-50%);background:var(--blue);overflow:hidden;
+  background-image:radial-gradient(1200px 800px at 85% 10%,rgba(92,141,255,.35),transparent 60%),radial-gradient(900px 700px at 0% 100%,rgba(6,44,143,.55),transparent 60%)}
+
+/* circuit-board traces */
+#traces{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+#traces path{fill:none;stroke-linecap:round;stroke-dasharray:var(--len);stroke-dashoffset:var(--len);animation:draw var(--dt,1.8s) cubic-bezier(.6,.05,.25,1) var(--dd,0s) forwards}
+#traces circle{fill:none;opacity:0;animation:fade .4s ease var(--dd,0s) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+/* entrance animations */
+.a{opacity:0;animation:var(--k,up) var(--t,.9s) cubic-bezier(.2,.8,.2,1) var(--d,0s) both}
+.fade{--k:fade}.left{--k:left}.mask{--k:mask;--t:1.1s}
+@keyframes up{from{opacity:0;transform:translateY(44px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes left{from{opacity:0;transform:translateX(-70px)}to{opacity:1;transform:none}}
+@keyframes mask{from{opacity:1;clip-path:inset(0 100% 0 0)}to{opacity:1;clip-path:inset(0 0 0 0)}}
+.ln{fill:none;stroke-dasharray:var(--len);stroke-dashoffset:var(--len);animation:drawp 1.6s cubic-bezier(.2,.8,.2,1) var(--d,0s) forwards}
+@keyframes drawp{to{stroke-dashoffset:0}}
+
+/* layout (same as the release story intro scene) */
+.mark{position:absolute;left:137px;top:121px;width:115px;height:198px}
+.mark path{fill:none;stroke:var(--lime);stroke-width:8}
+.es1{position:absolute;left:175px;top:165px;width:250px}
+.title{position:absolute;left:160px;top:400px}
+.kicker{font-family:var(--mono);font-size:28px;letter-spacing:.18em;color:var(--mist);margin:0}
+h1{margin:26px 0 0;font-size:220px;font-weight:800;letter-spacing:-.03em;line-height:1.02}
+h1 .lime{color:var(--lime)}
+.sub{margin:44px 0 0;font-size:44px;font-weight:300;color:var(--white)}
+.sub b{font-weight:600;color:var(--lime)}
+.art{position:absolute;right:120px;top:100px;width:420px;height:320px}
+.art path{fill:none;stroke-width:7;stroke-linecap:round}
+
+@media (prefers-reduced-motion:reduce){
+  .a,.ln,#traces path,#traces circle{animation:none!important;opacity:1;stroke-dashoffset:0}
+}
+</style>
+</head>
+<body>
+<div id="viewport">
+  <div id="stage">
+    <svg id="traces" viewBox="0 0 1920 1080" preserveAspectRatio="none" aria-hidden="true">
+      <path pathLength="1" style="--len:1;--dd:.1s;--dt:2s" stroke="#FFFFFF" stroke-width="1.6" opacity=".15" d="M0 720H520Q546 720 546 746V1000Q546 1026 572 1026H1000"/>
+      <circle cx="1000" cy="1026" r="6" stroke="#FFFFFF" stroke-width="2" opacity=".2" style="--dd:1.9s"/>
+      <path pathLength="1" style="--len:1;--dd:.25s;--dt:2.2s" stroke="#5C8DFF" stroke-width="1.6" opacity=".5" d="M1920 880H1560Q1534 880 1534 854V700Q1534 674 1508 674H1200"/>
+      <circle cx="1200" cy="674" r="6" stroke="#5C8DFF" stroke-width="2" opacity=".6" style="--dd:2.2s"/>
+      <path pathLength="1" style="--len:1;--dd:.4s;--dt:2.4s" stroke="#B4F03C" stroke-width="2.5" opacity=".5" d="M1920 520H1700Q1674 520 1674 546V640Q1674 666 1648 666H1480"/>
+      <circle cx="1480" cy="666" r="6" stroke="#B4F03C" stroke-width="2" opacity=".7" style="--dd:2.5s"/>
+      <path pathLength="1" style="--len:1;--dd:.55s;--dt:2s" stroke="#FFFFFF" stroke-width="1.6" opacity=".15" d="M880 0V120Q880 146 906 146H1200Q1226 146 1226 172V300"/>
+      <circle cx="1226" cy="300" r="6" stroke="#FFFFFF" stroke-width="2" opacity=".2" style="--dd:2.3s"/>
+      <path pathLength="1" style="--len:1;--dd:.7s;--dt:1.8s" stroke="#5C8DFF" stroke-width="1.6" opacity=".5" d="M0 960H240Q266 960 266 934V860"/>
+      <circle cx="266" cy="860" r="6" stroke="#5C8DFF" stroke-width="2" opacity=".6" style="--dd:2.4s"/>
+    </svg>
+
+    <svg class="mark a fade" style="--d:.1s" viewBox="0 0 162.5 280.18" aria-hidden="true"><path d="M4 280.18V28C4 14.75 14.75 4 28 4H162.5"/></svg>
+    <img class="es1 a left" style="--d:.4s" src="data:image/png;base64,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" alt="ES1">
+
+    <div class="title">
+      <p class="kicker a fade" style="--d:.8s">EBS ERP · AI EDITION</p>
+      <h1 class="a up" style="--d:1.1s">Coming <span class="lime">soon!</span></h1>
+      <p class="sub a mask" style="--d:2.4s">The <b>AI Edition</b> release story is on its way</p>
+    </div>
+
+    <svg class="art" viewBox="0 0 420 320" aria-hidden="true">
+      <path class="ln" pathLength="1" style="--d:1.6s;--len:1" stroke="#FFFFFF" d="M40 320V90a40 40 0 0 1 40-40h340"/>
+      <path class="ln" pathLength="1" style="--d:2s;--len:1" stroke="#B4F03C" d="M120 320V160a30 30 0 0 1 30-30h270"/>
+      <path class="ln" pathLength="1" style="--d:2.4s;--len:1" stroke="#5C8DFF" d="M200 320v-80a30 30 0 0 1 30-30h190"/>
+    </svg>
+  </div>
+</div>
+<script>
+(function(){
+  var stage=document.getElementById('stage');
+  function fit(){var s=Math.min(innerWidth/1920,innerHeight/1080);stage.style.transform='translate(-50%,-50%) scale('+s+')'}
+  addEventListener('resize',fit);fit();
+})();
+</script>
+</body>
+</html>
